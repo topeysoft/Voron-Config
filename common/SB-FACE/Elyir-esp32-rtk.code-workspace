@@ -1,0 +1,155 @@
+{
+	"folders": [
+		{
+			"name": "server",
+			"path": "server"
+		},
+		{
+			"name": "client",
+			"path": "client"
+		},
+		{
+			"name": "shared-libs",
+			"path": "shared-libs"
+		},
+		{
+			"name": "code-test",
+			"path": "code-test"
+		},
+		{
+			"name": "mower-esp32-fw",
+			"path": "mower-esp32-fw"
+		},
+		{
+			"name": "mower-stm32-fw",
+			"path": "mower-stm32-fw"
+		},
+		{
+			"name": "esp-rtk",
+			"path": "esp-rtk"
+		},
+		{
+			"name": "now-base",
+			"path": "now-base"
+		},
+		{
+			"name": "now-rover",
+			"path": "now-rover"
+		},
+		{
+			"name": "mower-stm32-fw",
+			"path": "mower-stm32-fw/mower-stm32-fw"
+		},
+		{
+			"path": "mower-shared-libs"
+		},
+		{
+			"path": "../../../../Users/temiadeyeri/Library/Mobile Documents/com~apple~CloudDocs/Workspace/pet-collar"
+		},
+		{
+			"path": "../../../../Users/temiadeyeri/Library/Mobile Documents/com~apple~CloudDocs/Workspace/geoFence"
+		},
+		{
+			"path": "../../elyir-mower-ui"
+		},
+		{
+			"path": "../../../../Users/temiadeyeri/Library/Mobile Documents/com~apple~CloudDocs/Workspace/elyir-rc"
+		},
+		{
+			"path": "mower-micro-fw"
+		},
+		{
+			"path": "../../robotix-workspace/qgroundcontrol"
+		},
+		{
+			"path": "../../robotix-workspace/ardupilot"
+		},
+		{
+			"path": "../../robotix-workspace/elyir-gc"
+		},
+		{
+			"path": "../../robotix-workspace/point-in-polygon"
+		},
+		{
+			"path": "../../robotix-workspace/elyir_dronekit"
+		},
+		{
+			"path": "../../robotix-workspace/bbblue-ardupilot"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"type_traits": "cpp",
+			"array": "cpp",
+			"string": "cpp",
+			"string_view": "cpp",
+			"deque": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"vector": "cpp",
+			"initializer_list": "cpp",
+			"regex": "cpp",
+			"bitset": "cpp",
+			"utility": "cpp",
+			"*.tpp": "cpp",
+			"*.tcc": "cpp",
+			"cstddef": "cpp",
+			"functional": "cpp",
+			"*.cpp---": "cpp",
+			"ostream": "cpp",
+			"system_error": "cpp",
+			"chrono": "cpp",
+			"*.cpp--": "cpp",
+			"algorithm": "cpp",
+			"cmath": "cpp",
+			"__bit_reference": "cpp",
+			"__bits": "cpp",
+			"__config": "cpp",
+			"__debug": "cpp",
+			"__hash_table": "cpp",
+			"__node_handle": "cpp",
+			"__nullptr": "cpp",
+			"__split_buffer": "cpp",
+			"__tuple": "cpp",
+			"atomic": "cpp",
+			"bit": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"compare": "cpp",
+			"concepts": "cpp",
+			"cstdarg": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"cstring": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"exception": "cpp",
+			"ios": "cpp",
+			"iosfwd": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"locale": "cpp",
+			"memory": "cpp",
+			"new": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"tuple": "cpp",
+			"typeinfo": "cpp",
+			"variant": "cpp",
+			"complex": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"cinttypes": "cpp",
+			"numbers": "cpp",
+			"filesystem": "cpp",
+			"condition_variable": "cpp",
+			"*.cpp-": "cpp",
+			"forward_list": "cpp",
+			"list": "cpp",
+			"any": "cpp"
+		}
+	}
+}

@@ -1,0 +1,184 @@
+
+#if defined(ESP32)
+#include <WiFi.h>
+#elif defined(ESP8266)
+#include <ESP8266WiFi.h>
+#endif
+#include <Arduino.h>
+#include <ArduinoJson.h>
+#include "RCManager.h"
+#include "DataManager.h"
+#include "ApiServerManager.h"
+#include "NetworkManager.h"
+#include "OTAManager.h"
+#include <Every.h>
+#include <Firebase_ESP_Client.h>
+
+// Provide the token generation process info.
+#include <addons/TokenHelper.h>
+
+// Provide the RTDB payload printing info and other helper functions.
+#include <addons/RTDBHelper.h>
+
+/* 1. Define the WiFi credentials */
+// #define WIFI_SSID "VirusBroadcast"
+// #define WIFI_PASSWORD "6185810376"
+
+/** 2. Define the API key
+ *
+ * The API key can be obtained since you created the project and set up
+ * the Authentication in Firebase console.
+ *
+ * You may need to enable the Identity provider at https://console.cloud.google.com/customer-identity/providers
+ * Select your project, click at ENABLE IDENTITY PLATFORM button.
+ * The API key also available by click at the link APPLICATION SETUP DETAILS.
+ *
+ */
+#define API_KEY "AIzaSyCxHy8Cw05QPkRPFmT_DlpMkk952yWAbsQ"
+
+/* 3. If work with RTDB, define the RTDB URL */
+#define DATABASE_URL "https://elyir-d4ede.firebaseio.com" //<databaseName>.firebaseio.com or <databaseName>.<region>.firebasedatabase.app
+
+/* 4. Define the Firebase Data object */
+FirebaseData fbdo;
+
+/* 5. Define the FirebaseAuth data for authentication data */
+FirebaseAuth auth;
+
+/* 6. Define the FirebaseConfig data for config data */
+FirebaseConfig config;
+
+unsigned long dataMillis = 0;
+int count = 0;
+
+String getID()
+{
+    String id = "";
+#if defined(ESP8266)
+    id = String(ESP.getChipId());
+#elif defined(ESP32)
+    id = String((uint32_t)ESP.getEfuseMac(), HEX);
+#endif
+    id.toUpperCase();
+    return id;
+}
+
+const char *toUserPath(String pathSufix)
+{
+    String path = "/" + String(auth.token.uid.c_str()) + "/" + getID() + "/" + pathSufix;
+    path.replace("//", "/");
+    return path.c_str();
+}
+const char *toUserPath(const char *pathSufix)
+{
+    return toUserPath(String(pathSufix));
+}
+void setup()
+{
+    Serial.begin(115200);
+    Serial2.begin(115200);
+    Serial.println("AutoMower - By Elyir LLC");
+    Serial.println("----------------------------------------");
+    settingsManager.setup();
+    settingsManager.readSetting("hostname", "elyirmower");
+    settingsManager.readSetting("wifi_ap_ssid", "Elyir_Robotix_Mower");
+    settingsManager.readSetting("wifi_ap_pass", "elyir1234");
+    settingsManager.readSetting("wifi_sta_ssid", "VirusBroadcast");
+    settingsManager.readSetting("wifi_sta_pass", "6185810376");
+    settingsManager.readSetting("fw_version", "0.0.1-alpha");
+    settingsManager.readSetting("fs_version", "0.1.1-alpha");
+    settingsManager.readSetting("fw_hash", "");
+    settingsManager.readSetting("fs_hash", "");
+    settingsManager.readSetting("build_date", "");
+    settingsManager.readSetting("user_name", "Elyir LLC");
+    settingsManager.readSetting("user_email", "info@elyir.com");
+    // setupDataManager();
+
+    Trace("Setting up network...");
+    networkManager.setAPCredentials(settings["wifi_ap_ssid"], settings["wifi_ap_pass"]);
+    networkManager.setSTACredentials(settings["wifi_sta_ssid"], settings["wifi_sta_pass"]);
+    networkManager.setHostname(settings["hostname"]);
+    Trace("Configuring WiFi...");
+    networkManager.setup();
+    Trace("WiFi setup complete.");
+    Trace("Setting up OTA ...");
+    otaManager.setup(apiServerManager.getServer());
+    Trace("OTA setup complete.");
+    Trace("Setting up web server ...");
+    //     apiServerManager.setup();
+    //     Trace("Web server setup complete.");
+    //     pinMode(LED_BUILTIN, OUTPUT); // set LED_BUILTIN pin as output
+    //     dataManager.send("ready", TX_DATA_TYPE_ESP_READY);
+    //     ensureAllComponentsAreReady();
+    // }
+    // void setup()
+    // {
+
+    //     Serial.begin(115200);
+
+    //     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    //     Serial.print("Connecting to Wi-Fi");
+    //     while (WiFi.status() != WL_CONNECTED)
+    //     {
+    //         Serial.print(".");
+    //         delay(300);
+    //     }
+    // Serial.println();
+    // Serial.print("Connected with IP: ");
+    // Serial.println(WiFi.localIP());
+    // Serial.println();
+
+    Serial.printf("Firebase Client v%s\n\n", FIREBASE_CLIENT_VERSION);
+
+    /* Assign the API key (required) */
+    config.api_key = API_KEY;
+
+    /* Assign the RTDB URL */
+    config.database_url = DATABASE_URL;
+
+    Firebase.reconnectWiFi(true);
+
+    /** To sign in as anonymous user, just sign up as anonymous user
+     * with blank email and password.
+     *
+     * The Anonymous provider must be enabled.
+     *
+     * To enable Anonymous provider,
+     * from Firebase console, select Authentication, select Sign-in method tab,
+     * under the Sign-in providers list, enable Anonymous provider.
+     *
+     * Warning: this will create anonymous user everytime you called this function and your user list
+     * will grow up and the anonymous users stay in the user list after it created and can be garbage user
+     * after the generated id token from this anonymous user will not use anymore.
+     *
+     * https://stackoverflow.com/questions/38694015/what-happens-to-firebase-anonymous-users
+     * https://stackoverflow.com/questions/39640574/how-to-bulk-delete-firebase-anonymous-users
+     */
+
+    /* Set ID token */
+    // The ID token obtained from other apps e.g. Firebase Admin.
+    // The Refresh token for token refreshment which used when token was expired.
+    // If Refresh token was not assigned or empty string, the ID token will not refresh when it expired.
+    Firebase.setIdToken(&config, "eyJhbGciOiJSUzI1NiIsImtpZCI6IjA2M2E3Y2E0M2MzYzc2MDM2NzRlZGE0YmU5NzcyNWI3M2QwZGMwMWYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZWx5aXItZDRlZGUiLCJhdWQiOiJlbHlpci1kNGVkZSIsImF1dGhfdGltZSI6MTY1OTcyNjQ4NCwidXNlcl9pZCI6Ill0VGZOOTFBVVFOcmd1dEkxZFoySlJ3bUt3cTIiLCJzdWIiOiJZdFRmTjkxQVVRTnJndXRJMWRaMkpSd21Ld3EyIiwiaWF0IjoxNjU5NzI2NDg0LCJleHAiOjE2NTk3MzAwODQsImVtYWlsIjoidGVtaS5hZGV5ZXJpQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZW1pLmFkZXllcmlAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.bN0YSW_c-bnUFKw2wIgqwEmUswwjuVECLozW_yaEH8e8gSREUilRNe0P_aGAEcGqS-8fx6srkuG_LUbBvA99eAvkNymKDPUmZ66P9_q6jHRJCK6-X9c9zguxt1lYADDLXQNT39cmVl6r01V8YPSRMVE7rf26wO7t1MPYFp93MHHJ_mwbbKjyNcaOpm107WjAFA7VyQXnf6sNPiup3bOrM3Ho48y14K6gqlVIK_CuySd3A2YpcQvvPLcRGSe8lDQW7OqPaWrvdgvvdkcBT7FMEC_wSNWHophL0ANnHKtIrBGc94CWl7vnWTvEQGik6K2BtOsnc8JNpojBWaszIB1dTg", 3600 /* expiry time */, "AOEOulZDI4N3QWhdtTjLANf6zZ597pltdcvDv1i0qL-91SIq8744hjdPafcjH1C0nyvt2h2oUbDsj88nLR0v0Ink3RnxbtEnbgEbcBvKujMSWRVhWl-FcjnVHnDLNxIII1_jt3H65NuN_6OESDgPlOFi98ttF3fMtw_0X2Ui0IZ8oGnzD7y6SBvLFtQsTiLde0BcFPjI33UMvQnJNV1VuN7wM9NpF487vA" /* refresh token */);
+
+    // To refresh the token 5 minutes before expired
+    config.signer.preRefreshSeconds = 3600 - 5 * 60;
+
+    /* Assign the callback function for the long running token generation task */
+    config.token_status_callback = tokenStatusCallback; // see addons/TokenHelper.h
+
+    Firebase.begin(&config, &auth);
+}
+
+void loop()
+{
+
+    // Firebase.ready() should be called repeatedly to handle authentication tasks.
+
+    if (millis() - dataMillis > 5000 && Firebase.ready())
+    {
+        dataMillis = millis();
+        Serial.printf("Current UID: %s\n", auth.token.uid.c_str());
+        Serial.printf("Set int... %s\n", Firebase.RTDB.setInt(&fbdo, toUserPath("/test_data/int"), count++) ? "ok" : fbdo.errorReason().c_str());
+    }
+}

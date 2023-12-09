@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Elyir RTK Base Station</title>
+
+    <!-- Custom fonts for this template-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet"> -->
+
+    <!-- Custom styles for this template-->
+    <!-- <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css"
+        integrity="sha512-Mk4n0eeNdGiUHlWvZRybiowkcu+Fo2t4XwsJyyDghASMeFGH6yUXcdDI3CKq12an5J8fq4EFzRVRdbjerO3RmQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+
+    <!--  Lefleat map -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+    <style type="text/css">
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #555;
+            text-align: center;
+            margin: 0;
+            padding: 0.5em;
+        }
+
+        #wrapper {
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        label,
+        .form-control,
+        .form-text {
+            display: block;
+            padding-bottom: .5rem;
+        }
+
+
+        .form-control {
+            padding: 0.5rem;
+            min-width: 15rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            padding: .75rem;
+            border: none;
+            border-radius: .25rem;
+        }
+
+        .btn-primary {
+            background-color: #4e73df;
+            color: #fff;
+            border: solid 1px #4e73df;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #2e59d9;
+            border-color: #2653d4;
+        }
+
+        .btn-primary:active {
+            color: #fff;
+            background-color: #2653d4;
+            border-color: #244ec9;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+
+    <div class="p-5 text-center">
+        <h1>Elyir RTK Base Station</h1>
+    </div>
+    <div class="row justify-content-center text-center">
+        <div class="col-xl-8 col-md-12 mb-12">
+            <form id="wifiSettingsForm" method="POST" class="needs-validation" novalidate>
+                <h4>WiFi Station Settings</h4>
+                <hr />
+                <br />
+                <div class="form-row justify-content-center text-left">
+                    <div class="form-group col-md-4">
+                        <label for="wifi_sta_ssid">Wifi SSID</label>
+                        <input type="text" class="form-control" id="wifi_sta_ssid" name="wifi_sta_ssid"
+                            placeholder="WiFi SSID" required>
+                        <!-- <small class="form-text text-muted">Your WiFi SSID.</small> -->
+                    </div>
+                </div>
+                <div class="form-row justify-content-center text-left">
+                    <div class="form-group col-md-4">
+                        <label for="wifi_sta_pass">WiFi Password</label>
+                        <input type="text" class="form-control" id="wifi_sta_pass" name="wifi_sta_pass"
+                            placeholder="WiFi Password" required>
+                        <!-- <small class="form-text text-muted">Your WiFi SSID.</small> -->
+                    </div>
+                </div>
+
+                <!-- <hr /> -->
+
+
+                <br>
+                <button type="submit" class="btn btn-primary">Save &
+                    Reboot</button>
+            </form>
+            <div class="p-5 "></div>
+        </div>
+
+    </div>
+
+
+</body>
+<script type="text/javascript">
+    function sendWifiData (form) {
+        return function (e) {
+            // stop the regular form submission
+            e.preventDefault();
+            // collect the form data while iterating over the inputs
+            var data = {};
+            for (var i = 0, ii = form.length; i < ii; ++i) {
+                var input = form[i];
+                if (input.name) {
+                    data[input.name] = input.value;
+                }
+            }
+
+            // construct an HTTP request
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+            // send the collected data as JSON
+            xhr.send(JSON.stringify(data));
+            // console.log(data);
+            xhr.onloadend = function (e) {
+                console.log("Done!", e)
+            };
+        };
+    }
+    document.forms[0].addEventListener('submit', sendWifiData(document.forms[0]));
+</script>
+
+</html>

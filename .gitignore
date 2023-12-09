@@ -1,0 +1,5 @@
+.DS_Store
+common/voron-klipper-config
+common/esp32-rtk
+Troodon/sd-backup
+**/input_shaper/*.png

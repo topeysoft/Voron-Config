@@ -1,0 +1,11 @@
+// app global css in SCSS form
+@import './utilities';
+
+.body--light {
+    background-color: #f8f8f8;
+}
+
+.q-card,
+.q-layout__shadow::after {
+    box-shadow: 2px 2px 8px 0 rgb(0 0 0 / 10%);
+}

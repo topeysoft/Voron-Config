@@ -1,0 +1,654 @@
+{
+    "signatures": [
+        {
+            "keyid": "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343",
+            "method": "rsassa-pss-sha256",
+            "sig": "MoS09gAbgP4IYEz8a8QI6zGNoIcXYwg1qwwWHQOtGCfPAHikrpPS9OrbFcag9lCbgk8PvworIwKbUE52TwYWK6jDCx8xvuxyUFYZZmyPQk0sX1NtTxOPbQ38sNdVAOGogLXbWAIPmf6Q2naavuS1jDIJkcB8coh/Lg7nwovksbcPcY4Hy2zOb3fV1jU8ms53yjrW6ONIUxxFDO+CROlz+vRRFMQCub3PfwB8igHZmV3+3RAGyXv05WRWxOb6ZL/RrJKvJdaw33vXNNCrT5wRAVpiZ6T45iB04OY9Qn9Cf8pMRN6tCTiVRrKroSuCJggYwmC3/qtd92XEwOhHmKJDGw=="
+        }
+    ],
+    "signed": {
+        "expires": "2023-04-06T16:03:21Z",
+        "targets": {
+            "docker-compose.yml-17.08.21-121853": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.yml",
+                    "version": "17.08.21-121853",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-17T17:19:16Z",
+                    "updatedAt": "2021-10-20T14:02:36Z",
+                    "compatibleWith": [
+                        {
+                            "name": "custom-test",
+                            "filepath": "custom-test-fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "buildType": "custom",
+                            "hash": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "version": "TorizonCore Builder union commit created at 2021-11-16T16:48:01"
+                        }
+                    ]
+                }
+            },
+            "docker-compose.yml-12.08.22-13932": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.yml",
+                    "version": "12.08.22-13932",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-08-12T06:39:46Z",
+                    "updatedAt": "2022-08-12T06:39:46Z"
+                }
+            },
+            "docker-test-17.08.21-121931": {
+                "hashes": {
+                    "sha256": "3ddc9f6a35ce124a2580646876ab32037703358539ce92c0c67a5330622aa963"
+                },
+                "length": 237,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "docker-test",
+                    "version": "17.08.21-121931",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-17T17:19:55Z",
+                    "updatedAt": "2021-08-17T17:19:55Z",
+                    "compatibleWith": [
+                        {
+                            "name": "custom-test",
+                            "filepath": "custom-test-fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "buildType": "custom",
+                            "hash": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "version": "TorizonCore Builder union commit created at 2021-11-16T16:48:01"
+                        },
+                        {
+                            "name": "dunfell/apalis-imx8/torizon-rt/torizon-core-podman/release",
+                            "filepath": "5/apalis-imx8/torizon-rt/torizon-core-podman/release-695927c6b3aa8e38a148e7f6d16cac1245c5644aa21e5d8ea75cc4b180aa6498",
+                            "buildType": "release",
+                            "hash": "695927c6b3aa8e38a148e7f6d16cac1245c5644aa21e5d8ea75cc4b180aa6498",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "dunfell/apalis-imx8/torizon/torizon-core-docker/release",
+                            "filepath": "5/apalis-imx8/torizon/torizon-core-docker/release-27200a7a7bd3e501bf180e0f68955bf9db7bc205fb88641f0636d3ffedd7a53b",
+                            "buildType": "release",
+                            "hash": "27200a7a7bd3e501bf180e0f68955bf9db7bc205fb88641f0636d3ffedd7a53b",
+                            "version": "5.1.0+build.1"
+                        }
+                    ]
+                }
+            },
+            "docker-compose.yml-19.07.22-75557": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.yml",
+                    "version": "19.07.22-75557",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-07-19T12:56:04Z",
+                    "updatedAt": "2022-07-19T12:56:04Z"
+                }
+            },
+            "simple-compose-18.08.21-91940": {
+                "hashes": {
+                    "sha256": "78d4c5442b7d9011be4f450b1a3fabad8409ca278842edb87a37172710b527d1"
+                },
+                "length": 132,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "simple-compose",
+                    "version": "18.08.21-91940",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-18T14:19:58Z",
+                    "updatedAt": "2021-08-18T14:19:58Z",
+                    "myobj1": {
+                        "nested1-2": "somevalue"
+                    },
+                    "compatibleWith": [
+                        {
+                            "name": "dunfell/colibri-imx8x-v10b/torizon-rt/torizon-core-podman/release",
+                            "filepath": "5/colibri-imx8x-v10b/torizon-rt/torizon-core-podman/release-cc93655ee0f9bbb23303f0a60bbf7dd2ac3f3db12caefb1e10cbf9b55ac36d8f",
+                            "buildType": "release",
+                            "hash": "cc93655ee0f9bbb23303f0a60bbf7dd2ac3f3db12caefb1e10cbf9b55ac36d8f",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "dunfell/apalis-imx6/torizon-upstream/torizon-core-podman/monthly",
+                            "filepath": "5/apalis-imx6/torizon-upstream/torizon-core-podman/monthly-2974ca304058d96b9ebda754da63ce123eb5247bf0278e6089ee124dc09d41d0",
+                            "buildType": "monthly",
+                            "hash": "2974ca304058d96b9ebda754da63ce123eb5247bf0278e6089ee124dc09d41d0",
+                            "version": "5.1.0-devel-202012+build.6"
+                        },
+                        {
+                            "name": "custom-test",
+                            "filepath": "custom-test-fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "buildType": "custom",
+                            "hash": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "version": "TorizonCore Builder union commit created at 2021-11-16T16:48:01"
+                        },
+                        {
+                            "name": "dunfell/apalis-imx6/torizon-upstream-rt/torizon-core-podman/release",
+                            "filepath": "5/apalis-imx6/torizon-upstream-rt/torizon-core-podman/release-f47edbfe22d067d39e500adcb3c42a74daafa1f704d2f74d3cf4cfe9b9429feb",
+                            "buildType": "release",
+                            "hash": "f47edbfe22d067d39e500adcb3c42a74daafa1f704d2f74d3cf4cfe9b9429feb",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "dunfell/apalis-imx8/torizon-rt/torizon-core-docker/release",
+                            "filepath": "5/apalis-imx8/torizon-rt/torizon-core-docker/release-3aaae78d5c6dc33592d285736e2982b161767db6b6d3525703f1160a4a477d3b",
+                            "buildType": "release",
+                            "hash": "3aaae78d5c6dc33592d285736e2982b161767db6b6d3525703f1160a4a477d3b",
+                            "version": "5.1.0+build.1"
+                        }
+                    ]
+                }
+            },
+            "smart-home/webthings/app-2.0": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "smart-home/webthings/app",
+                    "version": "2.0",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-05-03T03:04:39Z",
+                    "updatedAt": "2022-05-03T03:04:39Z"
+                }
+            },
+            "Update_event_test-19.05.22-105956": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "Update_event_test",
+                    "version": "19.05.22-105956",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-05-19T16:00:19Z",
+                    "updatedAt": "2022-05-19T16:00:19Z"
+                }
+            },
+            "docker-compose.yml-16.08.21-44136": {
+                "hashes": {
+                    "sha256": "4be79071f011af70d0d0e02d45f37e4cb16e1fc79089f4207ace0495544c51cb"
+                },
+                "length": 587,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "docker-compose.yml",
+                    "version": "16.08.21-44136",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-16T21:42:08Z",
+                    "updatedAt": "2021-08-16T21:42:08Z"
+                }
+            },
+            "smart-home/webthings/app-27.01.22-121543": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "smart-home/webthings/app",
+                    "version": "27.01.22-121543",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-01-27T18:16:05Z",
+                    "updatedAt": "2022-01-27T18:16:05Z"
+                }
+            },
+            "docker-compose.yml-19.07.22-81420": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.yml",
+                    "version": "19.07.22-81420",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-07-19T13:14:23Z",
+                    "updatedAt": "2022-07-19T13:14:23Z"
+                }
+            },
+            "smart-home/webthings/app-28.01.22-91357": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "smart-home/webthings/app",
+                    "version": "28.01.22-91357",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-01-28T15:14:25Z",
+                    "updatedAt": "2022-01-28T15:14:25Z"
+                }
+            },
+            "duplicate-test-1.0": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "duplicate-test",
+                    "version": "1.0",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-05-03T00:46:56Z",
+                    "updatedAt": "2022-05-03T00:47:41Z"
+                }
+            },
+            "docker-compose.yml-25.03.21-122032": {
+                "hashes": {
+                    "sha256": "f72ab9c07be1d6454d6d427bd5fa6a4f2adc9ee4e8a69b6f9cca6bec8762ddd6"
+                },
+                "length": 588,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "docker-compose.yml",
+                    "version": "25.03.21-122032",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-03-25T17:20:47Z",
+                    "updatedAt": "2021-03-25T17:20:47Z"
+                }
+            },
+            "docker-compose.lock.yaml-24.05.22-112958": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.lock.yaml",
+                    "version": "24.05.22-112958",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-05-24T16:30:14Z",
+                    "updatedAt": "2022-05-24T16:30:14Z"
+                }
+            },
+            "simple-compose-18.08.21-84310": {
+                "hashes": {
+                    "sha256": "92d61d47021e405d01aa4c1d3886c2806ee7fcc6d0b2b3103fd71bcd3b45be9e"
+                },
+                "length": 132,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "simple-compose",
+                    "version": "18.08.21-84310",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-18T13:43:28Z",
+                    "updatedAt": "2021-08-18T13:43:28Z",
+                    "compatibleWith": [
+                        {
+                            "name": "dunfell/colibri-imx8x-v10b/torizon/torizon-core-docker/release",
+                            "filepath": "5/colibri-imx8x-v10b/torizon/torizon-core-docker/release-e17624dabb18f1f5d30ad52a3e16f2ac3d07b202b06124979f3c479129b7bffe",
+                            "buildType": "release",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "dunfell/colibri-imx7/torizon-upstream-rt/torizon-core-podman/release",
+                            "filepath": "5/colibri-imx7/torizon-upstream-rt/torizon-core-podman/release-51e3e791c4e0a7f830fc957c4f3e8493167592bcec6522db2e4ef141873bbe1f",
+                            "buildType": "release",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "dunfell/colibri-imx7-emmc/torizon-upstream-rt/torizon-core-docker/nightly",
+                            "filepath": "5/colibri-imx7-emmc/torizon-upstream-rt/torizon-core-docker/nightly-d1a75d196ca78fa47a35d0fb838076dfa3d738406c4acd3b129eec399a7b0285",
+                            "buildType": "nightly",
+                            "version": "5.2.0-devel-20210401+build.261"
+                        },
+                        {
+                            "name": "dunfell/colibri-imx7-emmc/torizon-upstream/torizon-core-podman/nightly",
+                            "filepath": "5/colibri-imx7-emmc/torizon-upstream/torizon-core-podman/nightly-416fd961cabe6cd5500998da2a0916cbfd267fa75ced3578cac908f346ba7d33",
+                            "buildType": "nightly",
+                            "version": "5.2.0-devel-20210401+build.261"
+                        }
+                    ]
+                }
+            },
+            "smart-home/webthings/gateway-27.01.22-121450": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "smart-home/webthings/gateway",
+                    "version": "27.01.22-121450",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-01-27T18:15:11Z",
+                    "updatedAt": "2022-01-27T18:15:11Z"
+                }
+            },
+            "smart-home/webthings/app-1.0": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "smart-home/webthings/app",
+                    "version": "1.0",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-05-03T03:03:28Z",
+                    "updatedAt": "2022-05-03T03:03:28Z"
+                }
+            },
+            "docker-compose.yml-07.06.21-31150": {
+                "hashes": {
+                    "sha256": "dfcbae7f0584847a1b0191349d6cb39065478ffd04dcd8ccf07d2d50f874cb55"
+                },
+                "length": 520,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "docker-compose.yml",
+                    "version": "07.06.21-31150",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-06-07T20:12:14Z",
+                    "updatedAt": "2021-06-07T20:12:14Z"
+                }
+            },
+            "good-yml-16.06.21-80142": {
+                "hashes": {
+                    "sha256": "b878015d3fc66502f7381ca1c4e049d91beb577a0bd4b965481b18cee68bc572"
+                },
+                "length": 587,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "good-yml",
+                    "version": "16.06.21-80142",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-06-17T01:02:06Z",
+                    "updatedAt": "2021-06-17T01:02:06Z",
+                    "compatibleWith": [
+                        {
+                            "name": "dunfell/apalis-imx8/torizon-rt/torizon-core-docker/release",
+                            "filepath": "5/apalis-imx8/torizon-rt/torizon-core-docker/release-3aaae78d5c6dc33592d285736e2982b161767db6b6d3525703f1160a4a477d3b",
+                            "buildType": "release",
+                            "hash": "3aaae78d5c6dc33592d285736e2982b161767db6b6d3525703f1160a4a477d3b",
+                            "version": "5.1.0+build.1"
+                        },
+                        {
+                            "name": "custom-test",
+                            "filepath": "custom-test-fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "buildType": "custom",
+                            "hash": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                            "version": "TorizonCore Builder union commit created at 2021-11-16T16:48:01"
+                        }
+                    ]
+                }
+            },
+            "nginx-18.08.21-83335": {
+                "hashes": {
+                    "sha256": "c94b8c158675f0e794c1c407dd6e5e5eccd81de7983fde574e7590b216b5853e"
+                },
+                "length": 236,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "nginx",
+                    "version": "18.08.21-83335",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-08-18T13:33:58Z",
+                    "updatedAt": "2021-08-18T13:33:58Z"
+                }
+            },
+            "custom-test-fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6": {
+                "hashes": {
+                    "sha256": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6"
+                },
+                "length": 0,
+                "custom": {
+                    "cliUploaded": false,
+                    "name": "custom-test",
+                    "version": "fa6826d70513440d651db72bc89a635da15d6cb252499bb3f11c4546cc3f02c6",
+                    "hardwareIds": [
+                        "apalis-imx6"
+                    ],
+                    "targetFormat": "OSTREE",
+                    "uri": null,
+                    "createdAt": "2021-11-16T22:35:56Z",
+                    "updatedAt": "2021-11-16T22:35:56Z",
+                    "commitSubject": "TorizonCore Builder union commit created at 2021-11-16T16:48:01",
+                    "commitBody": "",
+                    "ostreeMetadata": {
+                        "version": "5.4.0+build.10-tcbuilder.20211116164801",
+                        "oe.machine": "apalis-imx6",
+                        "oe.distro": "torizon-upstream",
+                        "oe.distro-codename": "dunfell",
+                        "oe.image": "torizon-core-docker",
+                        "oe.tdx-build-purpose": "release",
+                        "oe.tdx-major": "5",
+                        "oe.arch": "arm",
+                        "oe.package-arch": "armv7at2hf-neon",
+                        "oe.kernel-source": [
+                            "git.toradex.com/linux-toradex.git",
+                            "toradex_5.4.y",
+                            "ce72bea42c97"
+                        ],
+                        "ostree.ref-binding": [
+                            "5/apalis-imx6/torizon-upstream/torizon-core-docker/release"
+                        ]
+                    }
+                }
+            },
+            "docker-compose.lock.yml-04.04.22-94219": {
+                "hashes": {
+                    "sha256": "d388bca0ecd1d6675757591834b651948abdd560680cd49ed3ae3eff7d04cb8e"
+                },
+                "length": 541,
+                "custom": {
+                    "name": "docker-compose.lock.yml",
+                    "version": "04.04.22-94219",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2022-04-05T02:42:28Z",
+                    "updatedAt": "2022-04-05T02:42:28Z"
+                }
+            },
+            "docker-compose.bad.yml-1": {
+                "hashes": {
+                    "sha256": "bb20b6ad8f3458a0466575ce1303c93cd26ef54eaf1f35c2a746d598b8edb467"
+                },
+                "length": 520,
+                "custom": {
+                    "cliUploaded": true,
+                    "name": "docker-compose.bad.yml",
+                    "version": "1",
+                    "hardwareIds": [
+                        "docker-compose"
+                    ],
+                    "targetFormat": "BINARY",
+                    "uri": null,
+                    "createdAt": "2021-06-10T00:55:02Z",
+                    "updatedAt": "2021-06-10T00:55:02Z"
+                }
+            }
+        },
+        "version": 294,
+        "delegations": {
+            "keys": {
+                "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9": {
+                    "keyval": {
+                        "public": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3XJVflolvhgwCqMgai3l\n01I2awDUlGYkeiFR6L1T2XyLxZZ0VeOBm6awgYTRMLxpRAjHBqlX6oIgcmvBkx1D\nlS7mYMjauLoeWEP/NnFZlh1UVLyqNCdnNKMwrpFqFlWIl3FVc9S0xy+aRH120YTx\nqmKxZ9bi0bM98v6a/h4BAZiD6jzyxpr7HxB4NmCDQxQ8a4F2SOAaIoNYbFXTyAjL\n/FFCeHoLyElEiVeQq+k6//+q/8gcmwED2f3PhXbAzwrMw/6bqajmMTm/2dP+KJ8Y\nFgEmgah4FSdnGJ2qAgpTBFS0on9m/qqDTqnaIZS/1V51ytff71EIPAXjF+QFPu+K\nFQIDAQAB\n-----END PUBLIC KEY-----\n"
+                    },
+                    "keytype": "RSA"
+                },
+                "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343": {
+                    "keyval": {
+                        "public": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxVSI7kFSR1tYzWroi5VY\nVXUlFjk9Zj2wjXUAXag3KpomOgvVU4txp2iD5fcy7oRw55B/IVvHfLgqGF6FJ5Jm\nu8S6HPVvkx866SMWC9pyEiXQTRBrwzu+iZjp95hbwuk3NWwKLm1lMn7kuQ9SuGRC\nUbbO5CSSTqZw3htW7Qfs0O1LtQHzPG3bZIABruUNCGpSB3azDj5pVUYVA7yV6FP8\n+4JNQFi5DFY5mUmmqDBM66yb6XlSB1r4Z8WyEELvWH8xG02Sagfs3OKPkwKpf55F\nrI/K5S95TGoCV9x+QBXZ0kwrCHO2AzBVOn4/AoZ5+yruPLgU5NZ6ZrkoI6l5YJo0\nnwIDAQAB\n-----END PUBLIC KEY-----\n"
+                    },
+                    "keytype": "RSA"
+                }
+            },
+            "roles": [
+                {
+                    "name": "tdx-lts",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "*/release-*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "tdx-quarterly",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "*/release-*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "tdx-containers",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "*docker-compose*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "tdx-monthly",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "*/monthly-*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "tdx-nightly",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "*/nightly-*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "test",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "/test"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                },
+                {
+                    "name": "external-delegation-name",
+                    "keyids": [
+                        "75268c4c167d3cab5edcfdf55474be4e5a3cee9932546395184ce2461a33ffc9",
+                        "a6aeb9734c5dacafa72a70579cc360aa9c4647215da8ae431a463d2097910343"
+                    ],
+                    "paths": [
+                        "extern-somename-*"
+                    ],
+                    "threshold": 1,
+                    "terminating": true
+                }
+            ]
+        },
+        "_type": "Targets"
+    }
+}

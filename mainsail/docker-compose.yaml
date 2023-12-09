@@ -1,0 +1,16 @@
+# Docker Compose file for running the Mainsail Application
+version: '3.9'
+services:
+  mainsail:
+    image: "ghcr.io/mainsail-crew/mainsail"
+    container_name: mainsail
+    restart: unless-stopped
+    # network_mode: host
+    volumes:
+      - ./config.json:/usr/share/nginx/html/config.json
+    # environment:
+      # - PUID=99
+      # - PGID=100
+      # - TZ=America/Chicago
+    ports:
+      - "8000:80"

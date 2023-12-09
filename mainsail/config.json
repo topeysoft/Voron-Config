@@ -1,0 +1,17 @@
+{
+  "instancesDB": "json",
+  "instances": [
+    {
+      "hostname": "mainsailos.local",
+      "port": 7125
+    },
+    {
+      "hostname": "e3dp-02.local",
+      "port": 7125
+    },
+    {
+      "hostname": "troodon-v2.local",
+      "port": 7125
+    }
+  ]
+}

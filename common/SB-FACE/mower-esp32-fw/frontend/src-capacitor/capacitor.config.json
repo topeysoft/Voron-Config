@@ -1,0 +1,7 @@
+{
+  "appId": "com.elyir.mower.app",
+  "appName": "Elyir Robotix Mower",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}

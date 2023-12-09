@@ -1,0 +1,174 @@
+/*
+ * ATTINY85_RC_Receiver_1.c
+ *
+ * Created: 05.01.2019 14:07:15
+ * Author : Andreas Ennemoser
+ * Description: Read and interpret signals from RC Receivers
+ */
+
+// the clock speed on ATTINY85 is approx. 8MHz
+// if fuse CKDIV8 is set (factory default), a prescaler of 8 is used which results in a 1MHz clock
+// for this code CKDIV8 needs to be unset as the code relies on 8MHz CPU speed
+// the actual frequency can be measured at PB4 if the CKOUT fuse is set
+
+//             ATTINY85 PIN Configuration (for more details see datasheet page 2)
+//                  -------
+//  RESET / PB5 ---| o     |--- VCC
+//   ADC3 / PB3 ---|       |--- PB2 / SCK
+//          PB4 ---|       |--- PB1 / MISO
+//          GND ---|       |--- PB0 / MOSI
+//                  -------
+
+// includes
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/atomic.h>
+
+// *****************************
+// ***** global variables ******
+// *****************************
+
+volatile uint8_t pwm_ready = 0;
+volatile uint16_t pwm_duty_cycle;
+volatile uint8_t count;
+volatile uint8_t overflows = 0;
+
+#define LED_PORT PB0
+#define RC_RECEIVER_PORT PB1
+
+#define LED_ON PORTB |= (1 << LED_PORT)
+#define LED_OFF PORTB &= ~(1 << LED_PORT)
+
+#define RISING_EDGE PINB & (1 << RC_RECEIVER_PORT)
+
+void Calibrate_OSCILLATOR(void)
+{
+
+    // function for calibrating the oscillator frequency
+
+    // this program and corresponding timer setup requires that overflow to happens
+    // therefore it is required to stay below 8MHz nominal frequency
+    // specifically if the frequency is higher than 8MHz unwanted overflows would occur and destroy the software intend
+
+    // Factory calibration for this very ATTINY85 was 148 (0x94 read from chip via ATMEL STUDIO "Device Programming")
+    // this gave a measured frequency of 8,196MHz
+    // frequency was measured with oscilloscope via PB4 (CKOUT fuse needs to be set for this)
+
+    // OSCCAL needs to be calibrated per chip
+    OSCCAL = 142; // this gave 7,96MHz (peaks of 8MHz) for value ranges see datasheet page 52
+}
+
+void Init_PORT(void)
+{
+
+    // this function initializes the pins which are used as output
+
+    DDRB |= (1 << LED_PORT);          // set led port as output
+    DDRB &= ~(1 << RC_RECEIVER_PORT); // set receiver port as input
+}
+
+void Init_INTERRUPTS()
+{
+
+    // this function initializes the interrupts
+    GIMSK |= (1 << PCIE);   // Pin Change Interrupt Enable (datasheet page 51)
+    PCMSK |= (1 << PCINT0); // Pin Change Enable Mask for PB0 (pin 5) (datasheet page 52)
+
+    sei(); // enable interrupts (MANDATORY)
+}
+
+void LED_Control(uint16_t pwm_duty_cycle, float position)
+{
+
+    // this function switches the LED on depending on RC signal
+    // position variable indicates 0%-100% stick position
+
+    float loc;
+
+    loc = 1000 + position / 100 * 1000;
+
+    if (pwm_duty_cycle >= (int)loc)
+    {
+        LED_ON;
+    }
+    else
+    {
+        LED_OFF;
+    }
+}
+
+int main(void)
+{
+
+    uint8_t local_overflows;
+    uint8_t local_count;
+
+    Calibrate_OSCILLATOR();
+    Init_PORT();
+    Init_INTERRUPTS();
+
+    while (1)
+    {
+
+        ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+        {
+            local_overflows = overflows;
+            local_count = count;
+        }
+
+        if (pwm_ready)
+        {
+            pwm_duty_cycle = local_overflows * 256 + local_count;
+            // pwm_duty_cycle = overflows * 256 + count;
+
+            LED_Control(pwm_duty_cycle, 25);
+
+            GIFR = (1 << PCIF);   // clear Pin Change Interrupt Flag (NOTE: correct way to clear an interrupt; do NOT use "|=" )
+            GIMSK |= (1 << PCIE); // Pin Change Interrupt Enable (datasheet page 51)
+
+            pwm_ready = 0;
+        }
+    }
+}
+
+ISR(PCINT0_vect)
+{
+
+    // interrupt service routine for pin change interrupt
+
+    uint8_t tcnt1;
+
+    if (RISING_EDGE)
+    { // check if rising edge pin change interrupt (beginning of servo pulse)
+
+        TCNT1 = 0;     // reset counter
+        overflows = 0; // reset overflows;
+
+        TIMSK |= (1 << TOIE1); // Timer/Counter1 Overflow Interrupt Enable
+        TIFR = (1 << TOV1);    // clear timer interrupt overflow flag (NOTE: correct way to clear an interrupt; do NOT use "|=" )
+
+        TCCR1 |= (1 << CS12); // start timer1 with prescaler CK/8 --> dt = 1us --> 1000 steps/ms
+
+        return;
+    }
+
+    // only reached when falling edge detected (end of servo pulse)
+
+    TIMSK &= ~(1 << TOIE1); // disable Timer/Counter1 Overflow Interrupt
+
+    tcnt1 = TCNT1;         // take timer value to local variable
+    TCCR1 &= ~(1 << CS12); // stop timer (clear ALL clock select bits; since here only CS12 was active, we reset only this one)
+
+    GIMSK &= ~(1 << PCIE); // disable Pin Change Interrupt
+
+    TIFR = (1 << TOV1); // clear timer interrupt overflow flag (NOTE: correct way to clear an interrupt; do NOT use "|=" )
+
+    count = tcnt1;
+    pwm_ready = 1;
+}
+
+ISR(TIMER1_OVF_vect)
+{
+
+    overflows++;
+}

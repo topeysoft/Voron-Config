@@ -1,0 +1,70 @@
+{
+    "name": "frontend",
+    "version": "0.0.1",
+    "description": "User interface for Elyir Robotix Mower",
+    "productName": "Elyir Robotix Mower",
+    "author": "Temitope Adeyeri <temi.adeyeri@gmail.com>",
+    "private": true,
+    "scripts": {
+        "dev": "quasar dev",
+        "build": "quasar build && yarn fix-paths",
+        "build-package": "node ./build-package.js",
+        "fix-paths": "node ./fix-paths.js",
+        "build-fs": "cd ../ && pio run -t uploadfs || true && cd ./frontend && node ./post-build.js",
+        "build-fw": "cd ../ && pio run -t upload || true && cd ./frontend && node ./post-build.js",
+        "deploy-fs": "yarn build && yarn upload-fs",
+        "deploy-fw": "yarn upload-fw",
+        "deploy-all": "yarn build && yarn build-fs && yarn build-fw && yarn build-package",
+        "deploy": "yarn deploy-all",
+        "test": "echo \"No test specified\" && exit 0"
+    },
+    "dependencies": {
+        "@quasar/extras": "^1.0.0",
+        "@zip.js/zip.js": "^2.4.23",
+        "axios": "^0.21.1",
+        "core-js": "^3.6.5",
+        "firebase": "^9.9.2",
+        "leaflet": "^1.8.0",
+        "quasar": "^2.0.0",
+        "shortid": "^2.2.16",
+        "spark-md5": "^3.0.2",
+        "timeago.js": "^4.0.2",
+        "vue": "^3.0.0",
+        "vue-i18n": "^9.0.0",
+        "vue-router": "^4.0.0",
+        "vue2-leaflet": "^2.7.1",
+        "vuex": "^4.0.1"
+    },
+    "devDependencies": {
+        "@quasar/app": "^3.0.0",
+        "adm-zip": "^0.5.9"
+    },
+    "browserslist": [
+        "last 10 Chrome versions",
+        "last 10 Firefox versions",
+        "last 4 Edge versions",
+        "last 7 Safari versions",
+        "last 8 Android versions",
+        "last 8 ChromeAndroid versions",
+        "last 8 FirefoxAndroid versions",
+        "last 10 iOS versions",
+        "last 5 Opera versions"
+    ],
+    "engines": {
+        "node": ">= 12.22.1",
+        "npm": ">= 6.13.4",
+        "yarn": ">= 1.21.1"
+    },
+    "fw_manifest": {
+        "name": "Elyir RTK Base Station FW",
+        "fw_version": "0.5.0",
+        "fw_hash": "",
+        "fs_version": "0.5.0",
+        "fs_hash": "",
+        "description": "Elyir RTK base OTA package",
+        "build_date": "",
+        "device_env": "esp32things",
+        "author": "Temitope Adeyeri ",
+        "email": "temi.adeyeri@gmail.com"
+    }
+}
