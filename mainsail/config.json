@@ -2,7 +2,7 @@
   "instancesDB": "json",
   "instances": [
     {
-      "hostname": "mainsailos.local",
+      "hostname": "e3dp-01.local",
       "port": 7125
     },
     {
