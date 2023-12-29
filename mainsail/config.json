@@ -2,15 +2,15 @@
   "instancesDB": "json",
   "instances": [
     {
-      "hostname": "e3dp-01.local",
+      "hostname": "obi1.local",
       "port": 7125
     },
     {
-      "hostname": "e3dp-02.local",
+      "hostname": "r2d2.local",
       "port": 7125
     },
     {
-      "hostname": "troodon-v2.local",
+      "hostname": "c3po.local",
       "port": 7125
     }
   ]

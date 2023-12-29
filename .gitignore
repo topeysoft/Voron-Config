@@ -1,9 +1,9 @@
 .DS_Store
 common/voron-klipper-config
 common/esp32-rtk
-Troodon/sd-backup
+R2D2/sd-backup
 **/input_shaper/*.png
 vpn/configs
 common/EnragedRabbitProject-main/*
-Voron 2.4/mmu-*
-Voron 2.4/ercf*
+OBI1/mmu-*
+OBI1/ercf*
