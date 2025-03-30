@@ -1,0 +1,108 @@
+
+[gcode_macro _HOME_IF_NEEDED]
+gcode:
+    {% if printer.toolhead.homed_axes != "xyz" %}
+        G28
+    {% endif %}
+
+
+# G28: Custom homing sequence
+[gcode_macro G28]
+rename_existing: G2800028
+gcode:
+  {% set x = 'X' if 'X' in params else '' %}
+  {% set y = 'Y' if 'Y' in params else '' %}
+  {% set a = 'A' if 'A' in params else '' %}
+  {% set b = 'B' if 'B' in params else '' %}
+  {% set c = 'C' if 'C' in params else '' %}
+
+  {% set homing_axes = 'XYZABC' | select('in', params) | list %}
+
+  # Always home Z first to avoid collisions
+  G2800028 Z
+  G2800028 {x} {y} {a} {b} {c}
+  # G90 # Force Absolute mode, for some reason it keeps defaulting to Relative
+#   {% if 'X' in params or not homing_axes %}
+#     SET_KINEMATIC_POSITION X=0 # Reset X position to compensate for small negatives after homing, not sure why.
+#   {% endif %}
+#   {% if 'Y' in params or not homing_axes %}
+#     SET_KINEMATIC_POSITION Y=0 # Reset Y position to compensate for small negatives after homing, not sure why.
+#   {% endif %}
+  G1 X0 Y0 Z120 F1800 # Move XY to 0 and Z to 100mm
+
+
+[gcode_macro _HOME_Z]
+gcode:
+  G91 ; Switch to relative positioning
+  G0 Z5 F500 ; Move Z up 5mm
+  G90 ; Switch to absolute positioning
+  G28.0 Z ; Home Z
+
+
+[gcode_macro TRAM_Y_AXIS]
+gcode:
+  ; Home the machine first
+    G28
+  ; Move the Y axis to 100mm
+    G1 Y100 F1000
+  ; Force move y1 stepper forward by 10mm
+  # FORCE_MOVE STEPPER=<config_name> DISTANCE=<value> VELOCITY=<value> [ACCEL=<value>]
+  FORCE_MOVE STEPPER=stepper_y DISTANCE=10 VELOCITY=1000
+  ; move y axis until the probe triggers
+  G38.2 Y100
+
+
+[gcode_macro _MOVE_UNTIL_ENDSTOP]
+description: Move the specified axis until the endstop is triggered
+gcode:
+  # How this will be implemented:
+  # Check if machine is homed and throw an error if not
+  # Move the axis by a small amount equal to a factor of the feedrate (e.g. 1/10th of the feedrate).
+  # Check if the endstop is triggered
+  # If not, continue moving the axis until the endstop is triggered or the axis reaches the maximum travel distance specified for the axis in the parameters
+  # If the endstop is triggered, stop the movement and report the position of the axis
+
+  # Check if the machine is homed
+  {% if printer.toolhead.homed_axes != "xyz" %}
+    {action_raise_error("Home XYZ before moving the axis")}
+  {% endif %}
+
+  # Check if the axis is specified
+  {% if not params.AXIS %}
+    {action_raise_error("No axis specified")}
+  {% endif %}
+
+  # Check if the axis is valid
+  {% set axis = params.AXIS|upper %}
+  {% if axis not in ["X", "Y", "Z"] %}
+    {action_raise_error("Invalid axis specified")}
+  {% endif %}
+
+  # Check if the distance is specified
+  {% if not params.DISTANCE %}
+    {action_raise_error("No distance specified")}
+  {% endif %}
+
+  # set the feedrate
+  {% set feedrate = params.FEEDRATE|default(1000)|float %}
+
+  # set the distance to move
+  {% set distance = params.DISTANCE|float %}
+
+  # set the step size
+  {% set step = feedrate / 10 %}
+
+  # set the direction
+  {% set direction = distance / abs(distance) %}
+
+
+  # Move the axis by a small amount
+  G91 ; relative positioning
+  G1 {axis}{step * direction} F{feedrate}
+  G90 ; absolute positioning
+
+  # Check if the endstop is triggered
+  QUERY_PROBE
+
+
+

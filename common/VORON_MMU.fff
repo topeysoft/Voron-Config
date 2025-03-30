@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profile name="ERCF MMU (Voron 2.4)" version="2023-12-26 19:34:36" app="S3D-Software 5.1.2" technology="fff">
+<profile name="Voron MMU (ERCF/TRADRACK)" version="2023-12-26 19:34:36" app="S3D-Software 5.1.2" technology="fff">
   <baseProfile></baseProfile>
   <extruder name="T0">
     <toolheadNumber>
@@ -750,7 +750,7 @@
   <mirrorVisualY>1</mirrorVisualY>
   <mirrorVisualZ>0</mirrorVisualZ>
   <machineBackgroundModel></machineBackgroundModel>
-  <startingScript>PRINT_START EXTRUDER=[extruder0_temperature] BED=[bed0_temperature] CHAMBER=[bed1_temperature]</startingScript>
+  <startingScript>PRINT_START EXTRUDER=[extruder0_temperature] BED=[bed0_temperature] CHAMBER=[bed1_temperature] T1=[extruder1_temperature] T2=[extruder2_temperature] T3=[extruder3_temperature] T4=[extruder4_temperature] T5=[extruder5_temperature] ; T1 through T5 are not used but they have to be set here to avoid errors</startingScript>
   <preLayerChangeScript></preLayerChangeScript>
   <postLayerChangeScript></postLayerChangeScript>
   <preRetractionScript></preRetractionScript>
